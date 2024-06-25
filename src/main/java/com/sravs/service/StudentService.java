@@ -11,14 +11,25 @@ import java.util.Optional;
 public class StudentService {
     @Autowired
     StudentRepo studentRepo;
-    public Student saveStudent(Student student){
-        studentRepo.save(student);
-        return student;
+
+    public String saveStudent(Student student) {
+        Optional<Student> optionalStudent = studentRepo.findByEmail(student.getEmail());
+        if (optionalStudent.isPresent()) {
+            return "Yes";
+        } else
+            studentRepo.save(student);
+        return "added";
     }
-    public Optional<Student> getStudent(String email){
-       return studentRepo.findByEmail(email);
+
+    public Optional<Student> getStudent(String email) {
+        return studentRepo.findByEmail(email);
 
     }
+    public Optional<Student> getStudentByMail(String email,String password) {
+        return studentRepo.findByEmailAndPassword(email,password);
+
+    }
+
 
 
 }

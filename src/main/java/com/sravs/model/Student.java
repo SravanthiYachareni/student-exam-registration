@@ -5,16 +5,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+
 @Entity
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private  int id;
     private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-
+    private  String lastName;
+    private  String studentId;
+    private  String phoneNumber;
+    private LocalDate dateOfBirth;
 
     public int getId() {
         return id;
@@ -40,21 +42,27 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
-
-
